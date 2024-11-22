@@ -654,10 +654,10 @@ public class SipSessionImplementation extends ReplicatableImpl implements IBMSip
     	if (!this.isValid()) throw new IllegalStateException("Can not be called on invalidated SipSession");
     	
 		//remove synchronized as it has caused deadlocks
-    	//synchronized (getInternalTuWrapper().getSynchronizer()) {
+    	synchronized (getInternalTuWrapper().getSynchronizer()) {
     		checkIsSessionValid();
 	     	getInternalTuWrapper().invalidateTU(true, true);    	
-    	//}
+    	}
     }
     
     /** 
